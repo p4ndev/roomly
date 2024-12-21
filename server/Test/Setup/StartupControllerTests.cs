@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Server.Business.Services;
+using Microsoft.AspNetCore.Mvc;
 using Server.Controller.Setup;
 using Server.Data.Interfaces;
 using Moq;
@@ -9,13 +10,15 @@ public class StartupControllerTests
 {
     private readonly CancellationToken              _token;
     private readonly Mock<SetupServiceInterface>    _setupService;
+    private readonly Mock<SessionService>           _sessionService;
     private readonly StartupController              _startupController;
 
     public StartupControllerTests()
     {
         _setupService           = new();
+        _sessionService         = new();
         _token                  = It.IsAny<CancellationToken>();
-        _startupController      = new StartupController(_setupService.Object);
+        _startupController      = new StartupController(_setupService.Object, _sessionService.Object);
     }
 
     [Fact]

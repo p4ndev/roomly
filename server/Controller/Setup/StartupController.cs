@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Server.Business.Services;
 using Server.Data.Interfaces;
 
 namespace Server.Controller.Setup;
@@ -8,7 +9,7 @@ namespace Server.Controller.Setup;
 [Route("api/setup/[controller]")]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-public class StartupController(SetupServiceInterface _setupServices) : ControllerBase
+public class StartupController(SetupServiceInterface _setupServices, SessionService _sessionService) : ControllerBase
 {
     [HttpGet]
     [AllowAnonymous]
@@ -28,7 +29,15 @@ public class StartupController(SetupServiceInterface _setupServices) : Controlle
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult?> BrandAsync(CancellationToken token = default)
     {
-        var output = await _setupServices.LogotypeAsync(token);
+        byte[]? output;
+
+        if (_sessionService.Logotype is null)
+        {
+            output = await _setupServices.LogotypeAsync(token);
+            _sessionService.Logotype = output;
+        }            
+        else
+            output = _sessionService.Logotype;
 
         if (output is null)
             return NotFound(null);

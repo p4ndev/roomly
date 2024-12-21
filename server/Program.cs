@@ -5,9 +5,10 @@ using Server.Data.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<PasswordServiceInterface, PasswordService>();
-builder.Services.AddSingleton<TokenServiceInterface, TokenService>();
+builder.Services.AddScoped<PasswordServiceInterface, PasswordService>();
 builder.Services.AddTransient<SetupServiceInterface, SetupService>();
+builder.Services.AddScoped<TokenServiceInterface, TokenService>();
+builder.Services.AddSingleton<SessionService>();
 builder.Services.AddDbContext<RelationalContext>();
 
 builder.Services.AddControllers();
