@@ -6,7 +6,6 @@ using Server.Data.Dtos;
 namespace Server.Controller.Setup;
 
 [ApiController]
-[AllowAnonymous]
 [Route("api/setup/[controller]")]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -14,6 +13,7 @@ namespace Server.Controller.Setup;
 public class InstallationController(SetupServiceInterface _setupServices, PasswordServiceInterface _passwordService) : ControllerBase
 {
     [HttpPost]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<IActionResult> InstallationAsync([Required][FromBody] InstallationDto? installationRequest, CancellationToken token = default)
     {

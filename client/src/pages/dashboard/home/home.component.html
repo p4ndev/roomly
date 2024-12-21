@@ -1,0 +1,28 @@
+<div class="container headline">
+    <h2>Dashboard</h2>
+    <button
+        mat-icon-button
+        [class]="isConnected() ? 'connected' : 'disconnected'"
+        [attr.aria-label]="isConnected() ? 'Online' : 'Offline'"
+        [matTooltip]="isConnected() ? 'Connected' : 'Disconnected'">
+            <mat-icon>{{ isConnected() ? 'cloud' : 'cloud_off' }}</mat-icon>
+    </button>
+</div>
+<div class="container">
+    <ul class="content">
+        <li><h3>Auditório</h3></li>
+        <li><h3>Principal</h3></li>
+        <li class="lock">
+            <div>
+                <h3>Sala 1</h3>
+                <mat-icon aria-hidden="false" aria-label="lock" fontIcon="lock" />
+            </div>
+            <mat-progress-bar mode="determinate" value="40" />
+        </li>
+        <li><h3>Sala 2</h3></li>
+        <li><h3>Sala 3</h3></li>
+        <li><h3>Sala 4</h3></li>
+        <li><h3>Corredor</h3></li>
+        <li><h3>Varanda</h3></li>
+    </ul>
+</div>

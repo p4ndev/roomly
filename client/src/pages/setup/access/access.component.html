@@ -1,0 +1,18 @@
+@if(!model()){
+    <mat-spinner />
+} @else {
+    <div class="centralized-panel">
+        <h1>Password Access</h1>
+        <app-access-item title="Viewer" [password]="model()!.viewer" />
+        <app-access-item title="Coordinator" [password]="model()!.coordinator" />
+        <app-access-item title="Administrator" [password]="model()!.administrator" />
+        <form [formGroup]="formGroup" (submit)="onSubmit()">
+            <p>
+                <mat-checkbox matInput formControlName="consent">I confirm that I have securely stored these passwords.</mat-checkbox>
+            </p>
+            <footer>
+                <button mat-button [disabled]="isEligible()" type="submit">Next</button>
+            </footer>
+        </form>
+    </div>
+}

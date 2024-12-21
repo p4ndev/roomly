@@ -1,0 +1,14 @@
+@if(model() !== null) {
+    <a 
+        [routerLink]="model()!.href"
+        ariaCurrentWhenActive="page"
+        routerLinkActive="active">
+            <mat-icon
+                [ngStyle]="{ 'animation-delay.s': delay() }"
+                [attr.aria-label]="model()!.label"
+                [fontIcon]="model()!.icon"
+                aria-hidden="false" />
+
+            <span>{{ model()!.label }}</span>
+    </a>
+}

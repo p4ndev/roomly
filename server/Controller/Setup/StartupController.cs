@@ -5,13 +5,13 @@ using Server.Data.Interfaces;
 namespace Server.Controller.Setup;
 
 [ApiController]
-[AllowAnonymous]
 [Route("api/setup/[controller]")]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 public class StartupController(SetupServiceInterface _setupServices) : ControllerBase
 {
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> StartupAsync(CancellationToken token = default)
@@ -23,6 +23,7 @@ public class StartupController(SetupServiceInterface _setupServices) : Controlle
     }
 
     [HttpGet("logotype")]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult?> BrandAsync(CancellationToken token = default)

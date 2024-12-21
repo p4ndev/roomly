@@ -1,0 +1,21 @@
+<div class="centralized-panel">
+  <h1>Installation</h1>
+  <form [formGroup]="formGroup" (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Logotype</mat-label>
+      <input matInput formControlName="logotype" readonly />
+      <input type="file" #logotypeFileInput hidden accept=".png,image/png" (change)="onFileSelected($event)" />
+      <button mat-flat-button class="frUpload" (click)="logotypeFileInput.click()">
+        <mat-icon>upload</mat-icon>Upload
+      </button>
+      <em>Png, 300 x 150, Transparency</em>
+    </mat-form-field>
+    <footer>
+      <button mat-button [disabled]="!formGroup.valid" type="submit">Register</button>
+    </footer>
+  </form>
+</div>

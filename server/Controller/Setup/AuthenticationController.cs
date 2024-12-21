@@ -7,13 +7,13 @@ using Server.Data.Dtos;
 namespace Server.Controller.Setup;
 
 [ApiController]
-[AllowAnonymous]
 [Route("api/setup/[controller]")]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 public class AuthenticationController(SetupServiceInterface _setupServices, TokenServiceInterface _tokenService) : ControllerBase
 {
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<AuthenticationDto>> ConnectAsync([FromHeader] string password, CancellationToken token = default)

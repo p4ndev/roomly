@@ -1,0 +1,15 @@
+<div class="centralized-panel">
+    <figure>
+        <img [src]="logotypeSource" alt="Brand" />
+    </figure>
+    <h1>Authentication</h1>
+    <form [formGroup]="formGroup" (submit)="onSubmit()">
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" required />
+        </mat-form-field>
+        <footer>
+            <button mat-button [disabled]="!formGroup.valid" type="submit">Connect</button>
+        </footer>
+    </form>
+</div>
