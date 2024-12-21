@@ -1,6 +1,11 @@
-@platform_HostAddress = http://localhost:5169
+@platform_HostAddress = https://localhost:7168/api
 
 GET {{platform_HostAddress}}/Setup/Startup
+Accept: application/json
+
+############################################################
+
+GET {{platform_HostAddress}}/Setup/Startup/Logotype
 Accept: application/json
 
 ############################################################
@@ -19,10 +24,6 @@ Content-Type: application/json
 GET {{platform_HostAddress}}/Setup/Access
 Accept: application/json
 
-############################################################
-
-GET {{platform_HostAddress}}/Setup/Startup/Logotype
-Accept: application/json
 
 ############################################################
 

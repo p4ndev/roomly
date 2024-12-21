@@ -4,7 +4,7 @@ using Server.Data.Interfaces;
 using Server.Data.Dtos;
 using Moq;
 
-namespace Setup;
+namespace Server.Test.Setup;
 
 public class AccessControllerTests
 {
