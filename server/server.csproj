@@ -31,7 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Folder Include="Controller\" />
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="Test\Setup\" />
+    <Folder Include="wwwroot\data\" />
   </ItemGroup>
 
   <ItemGroup>
