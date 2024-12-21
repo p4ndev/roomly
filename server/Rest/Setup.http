@@ -1,0 +1,31 @@
+@platform_HostAddress = http://localhost:5169
+
+GET {{platform_HostAddress}}/Setup/Startup
+Accept: application/json
+
+############################################################
+
+POST {{platform_HostAddress}}/Setup/Installation
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Name": "ABC",
+  "Logotype": "123"
+}
+
+############################################################
+
+GET {{platform_HostAddress}}/Setup/Access
+Accept: application/json
+
+############################################################
+
+GET {{platform_HostAddress}}/Setup/Startup/Logotype
+Accept: application/json
+
+############################################################
+
+GET {{platform_HostAddress}}/Setup/Authentication
+Accept: application/json
+password: ,FS2o<3}

@@ -1,0 +1,8 @@
+@HostAddress = http://localhost:5169/Api
+@ViewerToken = J3PkxKv8YvwUMK8uaZY6cQ==
+@CoordinatorToken = G7gYZqy3nHpraJ9FCCfoBQ==
+@AdministratorToken = Kh5O/naBc2cLy11qucBpsg==
+
+GET {{HostAddress}}/Dashboard/Room
+Authorization: Bearer {{AdministratorToken}}
+Accept: application/json
