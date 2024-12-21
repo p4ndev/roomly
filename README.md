@@ -6,84 +6,14 @@ Users can view available physical spaces, apply filters, make reservations with 
 
 The system will be provided as a monolith, packaged in a simple Docker container, allowing for seamless deployment into your infrastructure and hassle-free operation.
 
-# Features
+# Project
 
-## Setup
+In order to check the requirement and status please open the board below:
 
-- **Startup**
-Review current installation (once it is available).
-
-- **Installation**
-Application settings like name and logotype.
-
-	- Name: project title
-	- Logotype: brand awareness
-
-It is possible to have only one installation per container.
-
-- **Access**
-Passwords available for future usage.
-
-	- Administrator password access
-	- Coordinator password access
-	- Viewer password access
-
-It must not be shown twice, so please save it carefuly.
-
-- **Authentication**
-Initial section where users can connect based on previous password generated.
-
-## Management
-
-- **Reservation**
-Page section designed to lock agenda for a specific room based on a date (not conflicted).
-
-	- Logotype
-	- Room: available on the system
-	- Description: simplest and detailed objective
-	- Date and Time: available on the system
-	- Attendees: not conflicted with the capacity
-
-- **Room Detail**
-Float section to display on right side of the page with all room details and schedules.
-
-- **Room List**
-Page section dedicated to list all available room, and allow administrator to add, remove any previous data.
-
-	- Logotype
-	- Grid with all the rooms available
-	- Icon to display the grid on float panel (room detail section)
-	- Icon to remove the current room on entire system (hard delete / cascade)
-
-- **New Room**
-Float section to display on right side of the page with the form to add a new room.
-
-	- Room name (friendly)
-	- Capacity (max number)
-	- Week availability (days)
-	- Amenities (tags with possibilities to add new or reuse)
-	
-## Dashboard
-
-- **Home**
-List of all rooms no matter how its agenda is (locker or not).
-
-	- Logotype
-	- Search bar on right top
-	- Hamburger menu
-	- Grid with all rooms (3 or 2 per row)
-
-- **Search**
-Allow user to find rooms by name, capacity, amenities data.
-
-	- Available for all roles
-
-- **Menu**
-Display menu items based on roles as a hamburger on right top side.
-
-	- Viewer: home, sign out
-	- Coordinator: home, reservation and sign out
-	- Administrator: home, reservation, room, export and sign out
+- [Configuration](https://github.com/users/p4ndev/projects/8/views/1?filterQuery=tag%3AConfiguration)
+- [Setup](https://github.com/users/p4ndev/projects/8/views/1?filterQuery=tag%3ASetup)
+- [Dashboard](https://github.com/users/p4ndev/projects/8/views/1?filterQuery=tag%3ADashboard)
+- [Management](https://github.com/users/p4ndev/projects/8/views/1?filterQuery=tag%3AManagement)
 
 # Technical Specification
 
