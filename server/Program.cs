@@ -5,11 +5,12 @@ using Server.Data.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<PasswordServiceInterface, PasswordService>();
 builder.Services.AddTransient<SetupServiceInterface, SetupService>();
 builder.Services.AddScoped<TokenServiceInterface, TokenService>();
-builder.Services.AddSingleton<SessionService>();
+builder.Services.AddScoped<PasswordServiceInterface, PasswordService>();
+builder.Services.AddSingleton<SessionServiceInterface, SessionService>();
 builder.Services.AddDbContext<RelationalContext>();
+builder.Services.AddSignalR();
 
 builder.Services.AddControllers();
 
@@ -41,10 +42,12 @@ builder.Services
 var app = builder.Build();
 
 app.UseDefaultFiles();
+app.UseRouting();
 app.MapStaticAssets();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.MapFallbackToFile("/index.html");
+app.MapHub<SessionService>("live");
 app.Run();
