@@ -4,9 +4,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-import { AdministratorMenuComponent } from '../menu-roles/administrator-menu.component';
-import { CoordinatorMenuComponent } from '../menu-roles/coordinator-menu.component';
-import { ViewerMenuComponent } from '../menu-roles/viewer-menu.component';
+import { AdministratorMenuComponent } from '../menu-role/administrator-menu.component';
+import { CoordinatorMenuComponent } from '../menu-role/coordinator-menu.component';
+import { ViewerMenuComponent } from '../menu-role/viewer-menu.component';
 import { SessionService } from '../../service/session.service';
 import { RoleEnum } from '../../enum/role.enum';
 

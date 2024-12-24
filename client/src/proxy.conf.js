@@ -10,9 +10,21 @@ const PROXY_CONFIG = [
   {
     context: [
       "/api",
+      "/live",
     ],
     target,
-    secure: false
+    ws: true,
+    secure: false,
+    logLevel: 'debug',
+    onProxyReq: (proxyReq, req, res) => {
+      console.log(proxyReq);
+      console.log(`[Proxy Request] ${req.method} ${req.url} -> ${target}`);
+      console.log(res);
+    },
+    onError: (err, req, res) => {
+      console.error(`[Proxy Error] ${req.url}`, err);
+      console.log(res);
+    }
   }
 ]
 

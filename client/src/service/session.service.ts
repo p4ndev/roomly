@@ -8,6 +8,7 @@ export class SessionService {
     logotype    = signal('');
     token       = signal('');
     isLogged    = signal(false);
+    isConnected = signal(false);
     role        = signal(RoleEnum.None);
 
     constructor(){
@@ -21,8 +22,9 @@ export class SessionService {
     }
 
     disconnect() : void {
-        this.isLogged.set(false);
         this.token.set('');
+        this.isLogged.set(false);
+        this.isConnected.set(false);
         this.role.set(RoleEnum.None);
     }
 }

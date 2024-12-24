@@ -11,7 +11,6 @@ Content-Type: application/json
 {
   "Name": "Sala 1",
   "Description": "Completa no mezanino de vidro.",
-  "Order": 1,
   "Capacity": 10
 }
 
@@ -25,8 +24,46 @@ Content-Type: application/json
 {
   "Name": "Sala 2",
   "Description": "Mesas em pé no segundo andar.",
-  "Order": 2,
   "Capacity": 4
+}
+
+####################
+
+POST {{HostAddress}}/management/room
+Authorization: Bearer {{AdministratorToken}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Name": "Sala 3",
+  "Description": "Perto da saída com banheiro exclusivo.",
+  "Capacity": 8
+}
+
+####################
+
+POST {{HostAddress}}/management/room
+Authorization: Bearer {{AdministratorToken}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Name": "Sala 4",
+  "Description": "Ainda em construção.",
+  "Capacity": 15
+}
+
+####################
+
+POST {{HostAddress}}/management/room
+Authorization: Bearer {{AdministratorToken}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Name": "Auditório",
+  "Description": "Aconchegante e moderno.",
+  "Capacity": 80
 }
 
 ####################

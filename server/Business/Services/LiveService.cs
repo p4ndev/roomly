@@ -6,12 +6,6 @@ namespace Server.Business.Services;
 
 public class LiveService(IHubContext<LiveService> _hubContext) : Hub, LiveServiceInterface
 {
-    public async Task RoomAdded(RoomEntity entity)
+    public async Task RoomAddedAsync(RoomEntity entity)
         => await _hubContext.Clients.All.SendAsync("RoomAdded", entity);
-
-    public async Task RoomUpdated(RoomEntity entity)
-       => await _hubContext.Clients.All.SendAsync("RoomUpdated", entity);
-
-    public async Task RoomRemoved(int entityId)
-        => await _hubContext.Clients.All.SendAsync("RoomRemoved", entityId);
 }

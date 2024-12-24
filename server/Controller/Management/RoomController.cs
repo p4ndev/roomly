@@ -2,28 +2,31 @@
 using Microsoft.AspNetCore.Mvc;
 using Server.Data.Interfaces;
 using Server.Data.Entities;
+using Server.Data.Enums;
 using Server.Data.Dtos;
 
-namespace Server.Controller.Dashboard;
+namespace Server.Controller.Management;
 
 [ApiController]
 [Route("api/management/[controller]")]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-public class RoomController(RoomServiceInterface _roomService) : ControllerBase
+public class RoomController(RoomServiceInterface _roomService, LiveServiceInterface _liveService) : ControllerBase
 {
     [HttpPost]
-    [Authorize]
+    [Authorize(Roles = nameof(RoleEnum.Administrator))]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status304NotModified)]
     public async Task<IActionResult> CreateAsync([FromBody] RoomDto model, CancellationToken token = default)
     {
-        int? entityId = await _roomService.CreateAsync(model, token);
+        RoomEntity? entity = await _roomService.CreateAsync(model, token);
 
-        if (!entityId.HasValue)
+        if (entity is null)
             return StatusCode(StatusCodes.Status304NotModified);
 
-        return Created("api/management/room", entityId);
+        await _liveService.RoomAddedAsync(entity);
+
+        return Created("api/management/room", entity);
     }
 
     [HttpGet]

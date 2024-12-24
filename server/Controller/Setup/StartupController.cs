@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Server.Business.Services;
 using Server.Data.Interfaces;
 
 namespace Server.Controller.Setup;
@@ -9,7 +8,7 @@ namespace Server.Controller.Setup;
 [Route("api/setup/[controller]")]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-public class StartupController(SetupServiceInterface _setupServices, SessionService _sessionService) : ControllerBase
+public class StartupController(SetupServiceInterface _setupServices, SessionServiceInterface _sessionService) : ControllerBase
 {
     [HttpGet]
     [AllowAnonymous]

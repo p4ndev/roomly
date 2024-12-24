@@ -5,7 +5,7 @@
 namespace server.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Dashboard : Migration
+    public partial class v100 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -29,7 +29,6 @@ namespace server.Data.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Order = table.Column<int>(type: "INTEGER", nullable: false),
                     Capacity = table.Column<int>(type: "INTEGER", nullable: false),
                     Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
@@ -37,6 +36,24 @@ namespace server.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Rooms", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Settings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Logotype = table.Column<string>(type: "ntext", nullable: false),
+                    Viewer = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
+                    Coordinator = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
+                    Administrator = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
+                    Shown = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Settings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -81,6 +98,9 @@ namespace server.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "RoomAmenities");
+
+            migrationBuilder.DropTable(
+                name: "Settings");
 
             migrationBuilder.DropTable(
                 name: "Amenities");

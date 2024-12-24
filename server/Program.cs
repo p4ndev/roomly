@@ -10,6 +10,7 @@ builder.Services.AddScoped<TokenServiceInterface, TokenService>();
 builder.Services.AddScoped<SetupServiceInterface, SetupService>();
 builder.Services.AddScoped<PasswordServiceInterface, PasswordService>();
 builder.Services.AddSingleton<SessionServiceInterface, SessionService>();
+builder.Services.AddSingleton<LiveServiceInterface, LiveService>();
 builder.Services.AddDbContext<RelationalContext>();
 builder.Services.AddSignalR();
 

@@ -10,8 +10,8 @@ using Server.Business.Contexts;
 namespace server.Data.Migrations
 {
     [DbContext(typeof(RelationalContext))]
-    [Migration("20241224013915_Dashboard")]
-    partial class Dashboard
+    [Migration("20241224133140_v1.0.0")]
+    partial class v100
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,9 +74,6 @@ namespace server.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
-
-                    b.Property<int>("Order")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 

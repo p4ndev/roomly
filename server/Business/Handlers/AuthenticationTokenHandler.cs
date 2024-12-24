@@ -26,7 +26,7 @@ public class AuthenticationTokenHandler(
         var header = Request.Headers["Authorization"].FirstOrDefault();
 
         if (header is null)
-            return Task.FromResult(AuthenticateResult.Fail("No token provided"));
+            return Task.FromResult(AuthenticateResult.NoResult());
 
         var token = header!.Split(" ").Last();
 

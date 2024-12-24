@@ -9,8 +9,6 @@ public class RoomEntity
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id                   { get; private set; }
 
-    public int Order                { get; private set; }
-
     public int Capacity             { get; private set; }
 
     [Required]
@@ -27,7 +25,6 @@ public class RoomEntity
     public RoomEntity(RoomDto model)
     {
         Name        = model.Name;
-        Order       = model.Order;
         Capacity    = model.Capacity;
         Description = model.Description;
     }
