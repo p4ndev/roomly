@@ -1,0 +1,36 @@
+@HostAddress = https://localhost:7168/api
+@ViewerToken = J3PkxKv8YvwUMK8uaZY6cQ==
+@CoordinatorToken = G7gYZqy3nHpraJ9FCCfoBQ==
+@AdministratorToken = Kh5O/naBc2cLy11qucBpsg==
+
+POST {{HostAddress}}/management/room
+Authorization: Bearer {{AdministratorToken}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Name": "Sala 1",
+  "Description": "Completa no mezanino de vidro.",
+  "Order": 1,
+  "Capacity": 10
+}
+
+####################
+
+POST {{HostAddress}}/management/room
+Authorization: Bearer {{AdministratorToken}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Name": "Sala 2",
+  "Description": "Mesas em pé no segundo andar.",
+  "Order": 2,
+  "Capacity": 4
+}
+
+####################
+
+GET {{HostAddress}}/management/room
+Authorization: Bearer {{AdministratorToken}}
+Content-Type: application/json

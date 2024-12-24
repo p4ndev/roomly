@@ -1,6 +1,8 @@
-﻿namespace Server.Data.Entities;
+﻿using Server.Data.Dtos;
 
-[Table("Credentials")]
+namespace Server.Data.Entities;
+
+[Table("Rooms")]
 public class RoomEntity
 {
     [Key]
@@ -19,6 +21,16 @@ public class RoomEntity
     [MaxLength(255)]
     [Column(TypeName = "varchar(255)")]
     public string Description       { get; private set; } = null!;
+
+    public RoomEntity() { }
+
+    public RoomEntity(RoomDto model)
+    {
+        Name        = model.Name;
+        Order       = model.Order;
+        Capacity    = model.Capacity;
+        Description = model.Description;
+    }
 
     public ICollection<RoomAmenityEntity> RoomAmenities { get; set; } = new List<RoomAmenityEntity>();
 }

@@ -5,8 +5,9 @@ using Server.Data.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddTransient<SetupServiceInterface, SetupService>();
+builder.Services.AddScoped<RoomServiceInterface, RoomService>();
 builder.Services.AddScoped<TokenServiceInterface, TokenService>();
+builder.Services.AddScoped<SetupServiceInterface, SetupService>();
 builder.Services.AddScoped<PasswordServiceInterface, PasswordService>();
 builder.Services.AddSingleton<SessionServiceInterface, SessionService>();
 builder.Services.AddDbContext<RelationalContext>();
@@ -49,5 +50,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.MapFallbackToFile("/index.html");
-app.MapHub<SessionService>("live");
+app.MapHub<LiveService>("live");
 app.Run();

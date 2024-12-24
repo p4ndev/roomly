@@ -1,16 +1,16 @@
 @platform_HostAddress = https://localhost:7168/api
 
-GET {{platform_HostAddress}}/Setup/Startup
+GET {{platform_HostAddress}}/setup/startup
 Accept: application/json
 
 ############################################################
 
-GET {{platform_HostAddress}}/Setup/Startup/Logotype
+GET {{platform_HostAddress}}/setup/startup/logotype
 Accept: application/json
 
 ############################################################
 
-POST {{platform_HostAddress}}/Setup/Installation
+POST {{platform_HostAddress}}/setup/installation
 Accept: application/json
 Content-Type: application/json
 
@@ -21,12 +21,12 @@ Content-Type: application/json
 
 ############################################################
 
-GET {{platform_HostAddress}}/Setup/Access
+GET {{platform_HostAddress}}/setup/access
 Accept: application/json
 
 
 ############################################################
 
-GET {{platform_HostAddress}}/Setup/Authentication
+GET {{platform_HostAddress}}/setup/authentication
 Accept: application/json
 password: ,FS2o<3}
