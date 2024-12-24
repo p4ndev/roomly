@@ -1,0 +1,8 @@
+<li>
+    <h3
+        [matBadgeHidden]="room()!.reservations!.length <= 0"
+        [matBadge]="room()!.reservations!.length"
+        matBadgeOverlap="false"
+        matBadgeSize="large"
+    >{{ room()!.name }}</h3>
+</li>

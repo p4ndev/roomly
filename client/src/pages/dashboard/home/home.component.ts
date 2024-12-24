@@ -1,19 +1,21 @@
 import { Component, effect, inject, OnDestroy, OnInit, resource, signal } from '@angular/core';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { RoomUnlockComponent } from '../../../shared/room-unlock/room-unlock.component';
+import { RoomLockComponent } from '../../../shared/room-lock/room-lock.component';
 import { SessionService } from '../../../service/session.service';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { RoomEntity } from '../../../shared/entity/room.entity';
 import { environment } from '../../../environments/environment';
-import { HttpStatusCode } from '@angular/common/http';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { LiveService } from '../../../service/live.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { HttpStatusCode } from '@angular/common/http';
+import { ReservationEntity } from '../../../shared/entity/reservation.entity';
 
 @Component({
   selector    : 'app-home',
   styleUrl    : './home.component.scss',
   templateUrl : './home.component.html',
-  imports     : [ MatButtonModule, MatIconModule, MatTooltipModule, MatProgressBarModule ]
+  imports     : [ MatButtonModule, MatTooltipModule, MatIconModule, RoomUnlockComponent, RoomLockComponent ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   
@@ -47,10 +49,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   private restfulResponse = resource({
     loader : async () : Promise<Array<RoomEntity>> => {
       const response = await fetch(
-        `${environment.api}/management/room`,
+        `${environment.api}/dashboard`,
         {
           headers: {
-            "Content-Type": "application/json",
             "Authorization": `Bearer ${this.sessionService.token()}`,
           }
         }
@@ -62,6 +63,21 @@ export class HomeComponent implements OnInit, OnDestroy {
       return ((await response.json()) as Array<RoomEntity>);      
     }
   });
+
+  isLocked = (source : Array<ReservationEntity>) : boolean => {
+    const rightNow = new Date();
+    let output = false;
+
+    source
+      .forEach(e => {
+        if(rightNow >= e.startsAt && rightNow <= e.endsAt){
+          output = true;
+          return;
+        }
+      });
+
+    return output;
+  };
 
   private onSingleResponse = (res : RoomEntity) => this.model.update(data => [...data!, res]);
   private setConnection = (value : boolean) : void => this.sessionService.isConnected.set(value);

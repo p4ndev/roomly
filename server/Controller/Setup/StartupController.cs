@@ -22,8 +22,8 @@ public class StartupController(SetupServiceInterface _setupServices, SessionServ
         return NotFound(null);
     }
 
-    [HttpGet("logotype")]
     [AllowAnonymous]
+    [HttpGet("logotype")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult?> BrandAsync(CancellationToken token = default)

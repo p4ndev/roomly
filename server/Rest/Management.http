@@ -10,11 +10,11 @@ Content-Type: application/json
 
 {
   "Name": "Sala 1",
-  "Description": "Completa no mezanino de vidro.",
-  "Capacity": 10
+  "Description": "Mesas em pé no segundo andar.",
+  "Capacity": 4
 }
 
-####################
+####################################################################
 
 POST {{HostAddress}}/management/room
 Authorization: Bearer {{AdministratorToken}}
@@ -23,11 +23,11 @@ Content-Type: application/json
 
 {
   "Name": "Sala 2",
-  "Description": "Mesas em pé no segundo andar.",
-  "Capacity": 4
+  "Description": "Perto da saída com banheiro exclusivo.",
+  "Capacity": 8
 }
 
-####################
+####################################################################
 
 POST {{HostAddress}}/management/room
 Authorization: Bearer {{AdministratorToken}}
@@ -36,24 +36,11 @@ Content-Type: application/json
 
 {
   "Name": "Sala 3",
-  "Description": "Perto da saída com banheiro exclusivo.",
-  "Capacity": 8
-}
-
-####################
-
-POST {{HostAddress}}/management/room
-Authorization: Bearer {{AdministratorToken}}
-Accept: application/json
-Content-Type: application/json
-
-{
-  "Name": "Sala 4",
   "Description": "Ainda em construção.",
   "Capacity": 15
 }
 
-####################
+####################################################################
 
 POST {{HostAddress}}/management/room
 Authorization: Bearer {{AdministratorToken}}
@@ -65,9 +52,3 @@ Content-Type: application/json
   "Description": "Aconchegante e moderno.",
   "Capacity": 80
 }
-
-####################
-
-GET {{HostAddress}}/management/room
-Authorization: Bearer {{AdministratorToken}}
-Content-Type: application/json

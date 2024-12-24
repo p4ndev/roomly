@@ -1,0 +1,7 @@
+@HostAddress = https://localhost:7168/api
+@ViewerToken = J3PkxKv8YvwUMK8uaZY6cQ==
+@CoordinatorToken = G7gYZqy3nHpraJ9FCCfoBQ==
+@AdministratorToken = Kh5O/naBc2cLy11qucBpsg==
+
+GET {{HostAddress}}/dashboard
+Authorization: Bearer {{AdministratorToken}}

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -57,6 +58,28 @@ namespace server.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RoomId = table.Column<int>(type: "INTEGER", nullable: false),
+                    StartsAt = table.Column<DateTime>(type: "datetime", nullable: false),
+                    EndsAt = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Description = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RoomAmenities",
                 columns: table => new
                 {
@@ -83,6 +106,11 @@ namespace server.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Reservations_RoomId",
+                table: "Reservations",
+                column: "RoomId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RoomAmenities_AmenityId",
                 table: "RoomAmenities",
                 column: "AmenityId");
@@ -96,6 +124,9 @@ namespace server.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Reservations");
+
             migrationBuilder.DropTable(
                 name: "RoomAmenities");
 

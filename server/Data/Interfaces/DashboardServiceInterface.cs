@@ -1,5 +1,5 @@
-﻿using Server.Data.Dtos;
-using Server.Data.Entities;
+﻿using Server.Data.Entities;
+using Server.Data.Dtos;
 
 namespace Server.Data.Interfaces;
 

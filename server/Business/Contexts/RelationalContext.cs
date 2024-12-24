@@ -4,10 +4,11 @@ namespace Server.Business.Contexts;
 
 public class RelationalContext : DbContext
 {
-    public DbSet<SettingEntity>         Settings            { get; set; }
-    public DbSet<RoomEntity>            Rooms               { get; set; }
-    public DbSet<AmenityEntity>         Amenities           { get; set; }
-    public DbSet<RoomAmenityEntity>     RoomAmenities       { get; set; }
+    public DbSet<AmenityEntity> Amenities { get; set; }
+    public DbSet<ReservationEntity> Reservations { get; set; }
+    public DbSet<RoomAmenityEntity> RoomAmenities { get; set; }
+    public DbSet<RoomEntity> Rooms { get; set; }
+    public DbSet<SettingEntity> Settings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
